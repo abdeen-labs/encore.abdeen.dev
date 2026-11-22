@@ -39,7 +39,6 @@ web/templates/                 page.html, footer.html, icons.html (an icon sprit
 web/static/                    site.css, stats.js, images/ (made by scripts/images.sh), brand/ (the Abdeen Labs lockup).
 web/root/                      Files served at fixed paths.
 scripts/images.sh              Makes the images from Encore itself.
-railway.json                   The Railway service: Dockerfile build, healthcheck, region.
 ```
 
 ## Development
