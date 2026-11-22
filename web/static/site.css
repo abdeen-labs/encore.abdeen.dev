@@ -1,34 +1,50 @@
-/* encore.abdeen.dev. Encore's own look: a dark stage with one light. Grounds
-   and text from the app's After Dark palette, tungsten amber for the one lit
-   thing per view, Bodoni for names on the bill and Avenir Next for the rest,
-   both of which every Mac has. Dark only, like the app. */
+/* encore.abdeen.dev. Encore's own look: cream and cocoa, tangerine for the one
+   thing to press, set in Allo, the app's typeface (served from the page itself,
+   cut down by scripts/font.sh). The round cut is for names and headings, the
+   friendly cut for everything else. Light only, like the app. */
+
+@font-face {
+  font-family: "Allo";
+  src: url(/static/fonts/allo.woff2) format("woff2");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
-  color-scheme: dark;
-  --backdrop: #0e0c0b;
-  --stage: #14110f;
-  --surface: #1a1715;
-  --raised: #24201c;
-  --sunken: #0a0908;
-  --ink: #f4ede4;
-  --ink-2: #a99e92;
-  --ink-3: #8f857a;
-  --hairline: rgb(244 237 228 / 0.08);
-  --hairline-strong: rgb(244 237 228 / 0.15);
-  --tungsten: #ffb648;
-  --tungsten-deep: #e0821c;
-  --on-tungsten: #1c1206;
-  --gel: #c9a7ff;
-  --light: rgb(255 182 72 / 0.14);
-  --light-faint: rgb(255 182 72 / 0.06);
-  --shadow-window: 0 0 0 1px rgb(244 237 228 / 0.06), 0 28px 64px -16px rgb(0 0 0 / 0.75), 0 80px 150px -40px rgb(0 0 0 / 0.65);
-  --radius-window: 14px;
-  --radius-card: 20px;
+  color-scheme: light;
+  --backdrop: #f3e9d9;
+  --stage: #fcf7ef;
+  --surface: #fffcf7;
+  --raised: #ffffff;
+  --sunken: #f4ecdf;
+  --ink: #2b1d14;
+  --ink-2: #6b5546;
+  --ink-3: #7d6757;
+  --cocoa: 74 48 34;
+  --hairline: rgb(var(--cocoa) / 0.11);
+  --hairline-strong: rgb(var(--cocoa) / 0.2);
+  --tangerine: #ff7a2f;
+  --tangerine-light: #ff9a5c;
+  --tangerine-deep: #e2560f;
+  --tangerine-ink: #b8440a;
+  --on-tangerine: #2a1206;
+  --peach: #ffcba6;
+  --peach-light: #ffe6d2;
+  --lilac: #a284f2;
+  --lilac-ink: #6a4bcb;
+  --matcha: #56b37a;
+  --honey: #f6b93b;
+  --cherry: #ec4f5a;
+  --lift: 0 1px 2px rgb(var(--cocoa) / 0.06), 0 12px 32px -12px rgb(var(--cocoa) / 0.18);
+  --shadow-window: 0 0 0 1px var(--hairline), 0 30px 70px -24px rgb(var(--cocoa) / 0.38), 0 70px 140px -50px rgb(var(--cocoa) / 0.3);
+  --radius-window: 20px;
+  --radius-card: 28px;
   --gutter: 16px;
-  --display: "Bodoni 72", "Bodoni Moda", Didot, "Bodoni MT", "Libre Bodoni", Georgia, serif;
-  --font: "Avenir Next", Avenir, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font: "Allo", system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 @media (min-width: 720px) {
@@ -58,6 +74,7 @@ body {
   background: var(--backdrop);
   color: var(--ink);
   font: 17px/1.6 var(--font);
+  font-variation-settings: "ROND" 50;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: clip;
@@ -83,14 +100,18 @@ h1,
 h2,
 h3 {
   margin: 0;
-  font-weight: 400;
+  font-weight: 800;
   line-height: 1.08;
   text-wrap: balance;
 }
 
+/* The round cut: names and headings. */
+h1,
 h2,
-.h3 {
-  font-family: var(--display);
+.h3,
+.brand {
+  font-variation-settings: "ROND" 100;
+  letter-spacing: -0.025em;
 }
 
 p {
@@ -108,14 +129,14 @@ code {
 }
 
 ::selection {
-  background: var(--tungsten);
-  color: var(--on-tungsten);
+  background: var(--peach);
+  color: var(--ink);
 }
 
 :focus-visible {
-  outline: 2px solid var(--tungsten);
+  outline: 3px solid var(--tangerine);
   outline-offset: 3px;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 .sprite {
@@ -131,7 +152,7 @@ code {
   flex: none;
   fill: none;
   stroke: currentColor;
-  stroke-width: 1.6;
+  stroke-width: 1.8;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
@@ -141,11 +162,11 @@ code {
   left: 12px;
   top: -60px;
   z-index: 20;
-  padding: 10px 16px;
-  border-radius: 10px;
-  background: var(--tungsten);
-  color: var(--on-tungsten);
-  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: var(--tangerine);
+  color: var(--on-tangerine);
+  font-weight: 700;
   text-decoration: none;
 }
 
@@ -170,7 +191,7 @@ code {
   position: sticky;
   top: 0;
   z-index: 10;
-  background: rgb(14 12 11 / 0.78);
+  background: rgb(243 233 217 / 0.8);
   -webkit-backdrop-filter: saturate(1.4) blur(20px);
   backdrop-filter: saturate(1.4) blur(20px);
   border-bottom: 1px solid var(--hairline);
@@ -197,7 +218,7 @@ code {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  height: 60px;
+  height: 64px;
   max-width: calc(1180px + 2 * var(--gutter));
   margin-inline: auto;
   padding-inline: var(--gutter);
@@ -207,14 +228,19 @@ code {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-family: var(--display);
-  font-size: 22px;
+  font-size: 23px;
+  font-weight: 900;
   text-decoration: none;
 }
 
 .brand img {
-  width: 30px;
-  height: 30px;
+  width: 34px;
+  height: 34px;
+  transition: transform 0.35s var(--bounce);
+}
+
+.brand:hover img {
+  transform: rotate(-8deg) scale(1.06);
 }
 
 .top nav {
@@ -224,25 +250,25 @@ code {
 }
 
 .nav-link {
-  padding: 6px 12px;
-  border-radius: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
   color: var(--ink-2);
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 600;
   text-decoration: none;
   transition: color 0.15s, background-color 0.15s;
 }
 
 .nav-link:hover {
   color: var(--ink);
-  background: var(--hairline);
+  background: rgb(var(--cocoa) / 0.06);
 }
 
 .nav-icon {
   display: grid;
   place-items: center;
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   padding: 0;
 }
 
@@ -261,101 +287,115 @@ code {
   }
 }
 
-/* Buttons. The primary one is the page's light: tungsten, as in the app. */
+/* Buttons: soft keys, as in the app. Solid ones sit on a darker lip that
+   squashes when pressed. Tangerine is the one to press. */
 
 .button {
+  --lip: 4px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  height: 44px;
-  padding: 0 20px;
-  border-radius: 12px;
-  font: 600 16px/1 var(--font);
+  height: 46px;
+  padding: 0 22px;
+  border: 0;
+  border-radius: 999px;
+  font: 700 16px/1 var(--font);
   text-decoration: none;
   white-space: nowrap;
-  transition: background-color 0.15s, box-shadow 0.2s, color 0.15s, filter 0.15s, transform 0.15s var(--ease);
-}
-
-.button:active {
-  transform: scale(0.97);
+  transition: background-color 0.15s, box-shadow 0.15s var(--ease), color 0.15s, filter 0.15s, transform 0.15s var(--ease);
 }
 
 .button-primary {
-  background: linear-gradient(180deg, var(--tungsten), var(--tungsten-deep));
-  color: var(--on-tungsten);
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.35), 0 10px 30px -10px rgb(255 160 50 / 0.55);
+  background: linear-gradient(180deg, var(--tangerine-light), var(--tangerine));
+  color: var(--on-tangerine);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.4), 0 var(--lip) 0 var(--tangerine-deep), 0 calc(var(--lip) + 10px) 24px -8px rgb(226 86 15 / 0.45);
 }
 
 .button-primary:hover {
-  filter: brightness(1.07);
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.35), 0 12px 36px -8px rgb(255 160 50 / 0.7);
+  filter: brightness(1.04);
 }
 
 .button-secondary {
   background: var(--raised);
   color: var(--ink);
-  box-shadow: inset 0 0 0 1px var(--hairline-strong);
+  box-shadow: inset 0 0 0 1px var(--hairline-strong), 0 var(--lip) 0 rgb(var(--cocoa) / 0.16);
 }
 
 .button-secondary:hover {
-  box-shadow: inset 0 0 0 1px var(--ink-3);
+  box-shadow: inset 0 0 0 1px var(--ink-3), 0 var(--lip) 0 rgb(var(--cocoa) / 0.2);
+}
+
+.button-primary:active,
+.button-secondary:active {
+  transform: translateY(calc(var(--lip) * 0.7));
+}
+
+.button-primary:active {
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.4), 0 calc(var(--lip) * 0.3) 0 var(--tangerine-deep);
+}
+
+.button-secondary:active {
+  box-shadow: inset 0 0 0 1px var(--ink-3), 0 calc(var(--lip) * 0.3) 0 rgb(var(--cocoa) / 0.2);
 }
 
 .button-quiet {
-  padding-inline: 12px;
+  padding-inline: 14px;
   color: var(--ink-2);
 }
 
 .button-quiet:hover {
   color: var(--ink);
+  background: rgb(var(--cocoa) / 0.06);
 }
 
 .button-quiet .icon {
-  transition: transform 0.2s var(--ease);
+  transition: transform 0.25s var(--bounce);
 }
 
 .button-quiet:hover .icon {
-  transform: translateX(3px);
+  transform: translateX(4px);
 }
 
 .button-small {
-  height: 34px;
-  padding: 0 15px;
-  border-radius: 10px;
+  --lip: 3px;
+  height: 36px;
+  padding: 0 17px;
   font-size: 14px;
 }
 
 .button-large {
-  height: 52px;
-  padding: 0 26px;
-  font-size: 17px;
+  --lip: 5px;
+  height: 56px;
+  padding: 0 30px;
+  font-size: 18px;
 }
 
 .actions {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 12px;
+  gap: 14px;
 }
 
-/* Hero: a spotlight from the fly loft onto the name. */
+/* Hero: a peach blush in the corner, the icon as a sticker with sprinkles. */
 
 .hero {
   position: relative;
   isolation: isolate;
-  padding-top: clamp(56px, 9vw, 112px);
+  padding-top: clamp(56px, 9vw, 104px);
 }
 
 .hero::before {
   content: "";
   position: absolute;
   z-index: -1;
-  inset: -60px 0 auto;
-  height: min(1000px, 130vw);
+  inset: -64px 0 auto;
+  height: min(1100px, 140vw);
   background:
-    radial-gradient(30% 46% at 50% 0%, rgb(255 182 72 / 0.2), transparent 70%),
-    radial-gradient(58% 60% at 50% 18%, var(--light-faint), transparent 72%);
+    radial-gradient(42% 52% at 88% 0%, rgb(255 203 166 / 0.75), transparent 70%),
+    radial-gradient(34% 40% at 8% 12%, rgb(162 132 242 / 0.14), transparent 70%),
+    radial-gradient(60% 50% at 50% 30%, var(--stage), transparent 75%);
   pointer-events: none;
 }
 
@@ -366,17 +406,59 @@ code {
   text-align: center;
 }
 
+.sticker {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: clamp(120px, 16vw, 168px);
+  aspect-ratio: 1;
+}
+
 .hero-icon {
-  width: clamp(96px, 13vw, 128px);
-  filter: drop-shadow(0 22px 30px rgb(0 0 0 / 0.55));
+  width: clamp(104px, 14vw, 144px);
+  filter: drop-shadow(0 18px 24px rgb(var(--cocoa) / 0.22));
+  transform: rotate(-6deg);
+  transition: transform 0.5s var(--bounce);
+}
+
+.sticker:hover .hero-icon {
+  transform: rotate(4deg) scale(1.05);
+}
+
+.sprinkle {
+  position: absolute;
+  border-radius: 999px;
+}
+
+.sprinkle:nth-child(1) { top: 6%; left: -14%; width: 24px; height: 9px; background: var(--honey); transform: rotate(-30deg); }
+.sprinkle:nth-child(2) { top: 2%; right: -10%; width: 14px; height: 14px; background: var(--lilac); }
+.sprinkle:nth-child(3) { bottom: 18%; right: -18%; width: 26px; height: 9px; background: var(--matcha); transform: rotate(38deg); }
+.sprinkle:nth-child(4) { bottom: 8%; left: -12%; width: 12px; height: 12px; background: var(--cherry); }
+.sprinkle:nth-child(5) { top: -10%; left: 30%; width: 9px; height: 9px; background: var(--tangerine); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .sprinkle {
+    animation: bob 5s ease-in-out infinite;
+  }
+
+  .sprinkle:nth-child(2n) {
+    animation-delay: -2.5s;
+    animation-duration: 6s;
+  }
+
+  @keyframes bob {
+    50% {
+      translate: 0 -6px;
+    }
+  }
 }
 
 .hero h1 {
-  margin-top: 20px;
-  font-family: var(--display);
+  margin-top: 18px;
   font-size: clamp(4rem, 12vw, 7.5rem);
+  font-weight: 900;
   line-height: 1;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.04em;
 }
 
 .lede {
@@ -388,29 +470,19 @@ code {
 }
 
 .hero .actions {
-  margin-top: 34px;
+  margin-top: 36px;
 }
 
 .release {
-  margin-top: 18px;
+  margin-top: 20px;
   color: var(--ink-3);
   font-size: 14px;
+  font-weight: 500;
 }
 
 .hero-window {
   position: relative;
   margin-top: clamp(48px, 7vw, 80px);
-}
-
-/* The light the hero window throws on the stage floor. */
-.hero-window::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  inset: auto 8% -60px;
-  height: 160px;
-  background: radial-gradient(50% 50% at 50% 50%, var(--light), transparent 72%);
-  filter: blur(20px);
 }
 
 /* Windows: Encore's screenshots, framed as the window they are. */
@@ -433,12 +505,14 @@ code {
 }
 
 .eyebrow {
-  margin-bottom: 14px;
-  color: var(--tungsten);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 16px;
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: var(--peach-light);
+  color: var(--tangerine-ink);
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .feature h2 {
@@ -505,30 +579,35 @@ code {
 
 .script pre {
   margin: 0;
-  padding: 26px 28px;
+  padding: 28px 30px;
   overflow-x: auto;
   border-radius: var(--radius-card);
   background: var(--sunken);
-  box-shadow: inset 0 0 0 1px var(--hairline);
+  box-shadow: inset 0 0 0 1px var(--hairline), inset 0 2px 6px rgb(var(--cocoa) / 0.06);
   color: var(--ink);
-  font: 15px/1.9 var(--mono);
+  font: 17px/2 var(--font);
   white-space: pre-wrap;
 }
 
 .script code {
+  font-family: inherit;
   font-size: inherit;
 }
 
 .tag {
-  padding: 2px 6px;
-  border-radius: 5px;
+  padding: 2px 8px;
+  border-radius: 8px;
   background: var(--raised);
+  box-shadow: inset 0 0 0 1px var(--hairline);
   color: var(--ink-2);
+  font-family: var(--mono);
+  font-size: 0.82em;
 }
 
 .tag-voice {
-  background: rgb(201 167 255 / 0.12);
-  color: var(--gel);
+  background: rgb(162 132 242 / 0.14);
+  box-shadow: none;
+  color: var(--lilac-ink);
 }
 
 .facts {
@@ -542,7 +621,7 @@ code {
 .facts strong {
   display: block;
   color: var(--ink);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .facts span {
@@ -583,15 +662,13 @@ code {
   padding: clamp(24px, 4vw, 36px);
   border-radius: var(--radius-card);
   background: var(--surface);
-  box-shadow: inset 0 0 0 1px var(--hairline);
+  box-shadow: inset 0 0 0 1px var(--hairline), var(--lift);
 }
 
 .hosts h3 {
   color: var(--ink-3);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: 700;
 }
 
 .hosts ul {
@@ -609,7 +686,7 @@ code {
 
 .hosts strong {
   display: block;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .hosts code {
@@ -636,38 +713,47 @@ code {
 }
 
 .source .actions {
-  margin-top: 28px;
+  margin-top: 30px;
 }
 
-/* Download: the last light on the stage. */
+/* Download: a milk card on the cream, with the blush. */
 
 .download {
+  margin-top: clamp(96px, 13vw, 160px);
+  padding-inline: var(--gutter);
+}
+
+.download-inner {
   position: relative;
   isolation: isolate;
-  margin-top: clamp(96px, 13vw, 160px);
-  padding: clamp(72px, 10vw, 120px) 0 clamp(80px, 11vw, 128px);
-  border-top: 1px solid var(--hairline);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1180px;
+  margin-inline: auto;
+  padding: clamp(56px, 8vw, 96px) var(--gutter) clamp(56px, 8vw, 88px);
+  overflow: hidden;
+  border-radius: 40px;
+  background: var(--stage);
+  box-shadow: inset 0 0 0 1px var(--hairline), var(--lift);
   text-align: center;
 }
 
-.download::before {
+.download-inner::before {
   content: "";
   position: absolute;
   z-index: -1;
   inset: 0;
-  background: radial-gradient(36% 70% at 50% 0%, var(--light), transparent 72%);
+  background:
+    radial-gradient(44% 60% at 92% 0%, rgb(255 203 166 / 0.7), transparent 72%),
+    radial-gradient(36% 50% at 6% 100%, rgb(246 185 59 / 0.14), transparent 72%);
   pointer-events: none;
 }
 
-.download-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .download-icon {
-  width: 88px;
-  filter: drop-shadow(0 16px 24px rgb(0 0 0 / 0.5));
+  width: 96px;
+  filter: drop-shadow(0 14px 20px rgb(var(--cocoa) / 0.22));
+  transform: rotate(-6deg);
 }
 
 .download h2 {
@@ -681,7 +767,7 @@ code {
 }
 
 .requires {
-  margin-top: 18px;
+  margin-top: 22px;
   color: var(--ink-3);
   font-size: 15px;
 }
@@ -694,18 +780,16 @@ code {
   gap: 10px 14px;
   max-width: 100%;
   margin-top: 30px;
-  padding: 12px 18px;
-  border-radius: 12px;
-  background: var(--sunken);
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: var(--raised);
   box-shadow: inset 0 0 0 1px var(--hairline);
 }
 
 .brew-label {
-  color: var(--ink-3);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  color: var(--tangerine-ink);
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .brew code {
@@ -721,6 +805,7 @@ code {
 /* Footer */
 
 .foot {
+  margin-top: clamp(56px, 8vw, 88px);
   padding: 48px 0 56px;
   border-top: 1px solid var(--hairline);
   color: var(--ink-3);
@@ -744,6 +829,7 @@ code {
 
 .foot-links a {
   color: var(--ink-2);
+  font-weight: 500;
   text-decoration: none;
 }
 
@@ -761,26 +847,31 @@ code {
   min-height: 100vh;
   min-height: 100dvh;
   padding: 32px var(--gutter);
-  background: radial-gradient(40% 50% at 50% 0%, var(--light), transparent 72%);
+  background:
+    radial-gradient(42% 52% at 88% 0%, rgb(255 203 166 / 0.7), transparent 70%),
+    var(--backdrop);
   text-align: center;
 }
 
-.missing img {
-  filter: drop-shadow(0 16px 24px rgb(0 0 0 / 0.5));
+.missing .sticker {
+  width: 120px;
+}
+
+.missing .hero-icon {
+  width: 96px;
 }
 
 .missing h1 {
   margin-top: 24px;
-  font-family: var(--display);
   font-size: clamp(2.4rem, 6vw, 3.5rem);
 }
 
 .missing p {
-  margin: 12px 0 30px;
+  margin: 12px 0 32px;
   color: var(--ink-2);
 }
 
-/* Things come into the light as they scroll in. */
+/* Things pop in as they scroll into view. */
 
 @media (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: view()) {
@@ -793,7 +884,7 @@ code {
     @keyframes reveal {
       from {
         opacity: 0;
-        transform: translateY(24px);
+        transform: translateY(28px) scale(0.98);
       }
     }
   }
@@ -804,7 +895,9 @@ code {
     scroll-behavior: auto;
   }
 
-  .button {
+  .button,
+  .hero-icon,
+  .brand img {
     transition: none;
   }
 }

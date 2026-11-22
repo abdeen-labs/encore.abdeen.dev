@@ -6,8 +6,8 @@
 <title>Encore — Local voice AI for the Mac</title>
 <meta name="description" content="Free, open-source voice AI that runs on your Mac: text to speech, voice cloning, voice design, voice changing, multi-speaker scripts, and transcription. Nothing you make leaves your computer.">
 <link rel="canonical" href="{{.SiteURL}}/">
-<meta name="color-scheme" content="dark">
-<meta name="theme-color" content="#0e0c0b">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#f3e9d9">
 <link rel="icon" type="image/png" href="{{asset "/static/images/icon-64.png"}}">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
@@ -20,6 +20,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Encore's Studio, with a script ready to perform and a list of takes.">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="{{asset "/static/fonts/allo.woff2"}}" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{{asset "/static/site.css"}}">
 {{template "stats" false}}
 </head>
@@ -46,7 +47,10 @@
 
 <section id="top" class="hero" aria-labelledby="hero-title">
   <div class="wrap hero-text">
-    <img class="hero-icon" src="{{asset "/static/images/icon-256.webp"}}" srcset="{{asset "/static/images/icon-256.webp"}} 1x, {{asset "/static/images/icon-512.webp"}} 2x" alt="" width="128" height="128">
+    <div class="sticker" aria-hidden="true">
+      <span class="sprinkle"></span><span class="sprinkle"></span><span class="sprinkle"></span><span class="sprinkle"></span><span class="sprinkle"></span>
+      <img class="hero-icon" src="{{asset "/static/images/icon-256.webp"}}" srcset="{{asset "/static/images/icon-256.webp"}} 1x, {{asset "/static/images/icon-512.webp"}} 2x" alt="" width="144" height="144">
+    </div>
     <h1 id="hero-title">Encore</h1>
     <p class="lede">Text to speech, voice cloning, voice design, voice changing, multi-speaker scripts, and transcription, all on your own Mac. Nothing you type, record, or generate leaves your computer.</p>
     <div class="actions">
@@ -206,7 +210,7 @@
 
 <section class="download" aria-labelledby="download-title">
   <div class="wrap download-inner reveal">
-    <img class="download-icon" src="{{asset "/static/images/icon-128.webp"}}" srcset="{{asset "/static/images/icon-128.webp"}} 1x, {{asset "/static/images/icon-256.webp"}} 2x" alt="" width="88" height="88" loading="lazy">
+    <img class="download-icon" src="{{asset "/static/images/icon-128.webp"}}" srcset="{{asset "/static/images/icon-128.webp"}} 1x, {{asset "/static/images/icon-256.webp"}} 2x" alt="" width="96" height="96" loading="lazy">
     <h2 id="download-title">Download Encore</h2>
     <p class="release">{{if .HasRelease}}Version {{.Version}}{{with .Published}}, {{.}}{{end}}{{with .Size}} · {{.}}{{end}}{{else}}The latest version{{end}}</p>
     <a class="button button-primary button-large" href="{{.DownloadURL}}" data-event="download" data-event-location="closing"{{with .Version}} data-event-version="{{.}}"{{end}}>

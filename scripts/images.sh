@@ -1,12 +1,13 @@
 #!/bin/bash
 # Makes the page's images from Encore itself: the screenshots in its README
 # (docs/screenshots, drawn by the app's snapshot mode), its app icon, and the
-# favicons and sharing image made from those.
+# favicons and sharing image made from those. The sharing image is set in Allo,
+# from the font Encore bundles.
 #
 #   scripts/images.sh
 #
 # Needs a checkout of Encore (ENCORE, default ~/Developer/encore),
-# ImageMagick, and cwebp. Writes web/static/images and
+# ImageMagick, cwebp, and Swift (Xcode's command-line tools). Writes web/static/images and
 # web/root/{favicon.ico,apple-touch-icon.png}.
 
 set -euo pipefail
@@ -45,15 +46,8 @@ magick "$icon" -resize 180x180 -strip "$root/web/root/apple-touch-icon.png"
 magick "$icon" -define icon:auto-resize=48,32,16 -strip "$root/web/root/favicon.ico"
 
 # The sharing image: the icon and the name over the Studio, 1200 by 630, in
-# Encore's own faces, which every Mac has. ImageMagick takes a collection's
-# first face: Bodoni 72 Book, and Avenir Book (Avenir Next's first is Bold).
-display="/System/Library/Fonts/Supplemental/Bodoni 72.ttc"
-text="/System/Library/Fonts/Avenir.ttc"
-magick -size 1200x630 xc:'#0e0c0b' \
-  \( "$work/studio.png" -resize 1040x \) -geometry +80+250 -composite \
-  \( "$icon" -resize 132x132 \) -geometry +72+60 -composite \
-  -font "$display" -pointsize 76 -fill '#f4ede4' -annotate +232+142 'Encore' \
-  -font "$text" -pointsize 27 -fill '#a99e92' -annotate +236+188 'Local voice AI for the Mac' \
-  -quality 86 -sampling-factor 4:2:0 -strip "$out/og.jpg"
+# round Allo on the cream (scripts/og.swift).
+swift "$root/scripts/og.swift" "$encore/Encore/Resources/Fonts/AlloVariable.ttf" "$work/studio.png" "$icon" "$work/og.png"
+magick "$work/og.png" -background '#f3e9d9' -flatten -quality 86 -sampling-factor 4:2:0 -strip "$out/og.jpg"
 
 echo "Wrote $(ls "$out" | wc -l | tr -d ' ') images to web/static/images"
