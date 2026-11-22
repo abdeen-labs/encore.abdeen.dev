@@ -62,7 +62,7 @@
     </div>
     <p class="release">{{if .HasRelease}}Version {{.Version}}{{with .Size}} · {{.}}{{end}} · {{end}}macOS {{.MacOS}}+ on Apple silicon · Free and open source</p>
   </div>
-  <div class="wrap wrap-wide">
+  <div class="wrap wrap-wide hero-stage">
     <figure class="window hero-window">
       <img src="{{asset "/static/images/studio-1180.webp"}}" srcset="{{srcset "studio" 1180 2360}}" sizes="(min-width: 1212px) 1180px, calc(100vw - 32px)" width="1180" height="780" fetchpriority="high" alt="Encore's Studio: a script with a pause tag, the model, voice, and language pickers, the Perform button, and a list of takes.">
     </figure>
@@ -110,10 +110,21 @@
   </div>
   <div class="wrap">
     <div class="script reveal">
+      <div class="script-sample">
       <pre aria-label="A script with tags"><code>Ladies and gentlemen, <span class="tag">[pause 0.6s]</span> tonight's performance begins.
 <span class="tag">[laugh]</span> Please silence your phones.
 
 <span class="tag tag-voice">[voice: Mira]</span> Wait, has anyone seen the Captain?</code></pre>
+      <div class="take" aria-hidden="true">
+        <span class="take-play"></span>
+        <span class="take-wave">
+          <span class="bars"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span>
+          <span class="bars bars-played"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span>
+          <span class="playhead"></span>
+        </span>
+        <span class="take-time">0:06</span>
+      </div>
+      </div>
       <ul class="facts">
         <li><strong>Plain-text scripts</strong><span>A few tags shape the performance: pauses, voice changes, and sounds like a laugh or a sigh, on the models that have them.</span></li>
         <li><strong>Pronunciations</strong><span>One list fixes names, jargon, and acronyms for every voice.</span></li>
