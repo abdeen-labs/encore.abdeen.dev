@@ -1,0 +1,5 @@
+.git
+scripts
+*_test.go
+README.md
+railway.json

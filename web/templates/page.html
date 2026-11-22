@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Encore — Local voice AI for the Mac</title>
+<meta name="description" content="Free, open-source voice AI that runs on your Mac: text to speech, voice cloning, voice design, voice changing, multi-speaker scripts, and transcription. Nothing you make leaves your computer.">
+<link rel="canonical" href="{{.SiteURL}}/">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0e0c0b">
+<link rel="icon" type="image/png" href="{{asset "/static/images/icon-64.png"}}">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Encore">
+<meta property="og:title" content="Encore — Local voice AI for the Mac">
+<meta property="og:description" content="Text to speech, voice cloning, voice design, voice changing, and transcription, all on your own Mac. Free and open source.">
+<meta property="og:url" content="{{.SiteURL}}/">
+<meta property="og:image" content="{{.SiteURL}}{{asset "/static/images/og.jpg"}}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Encore's Studio, with a script ready to perform and a list of takes.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="{{asset "/static/site.css"}}">
+{{template "stats" false}}
+</head>
+<body>
+{{template "icons"}}
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="#top" aria-label="Encore, back to top" data-event="nav" data-event-section="top">
+      <img src="{{asset "/static/images/icon-128.webp"}}" alt="" width="30" height="30">
+      <span>Encore</span>
+    </a>
+    <nav aria-label="Main">
+      <a class="nav-link" href="#features" data-event="nav" data-event-section="features">Features</a>
+      <a class="nav-link" href="#privacy" data-event="nav" data-event-section="privacy">Privacy</a>
+      <a class="nav-link nav-icon" href="https://github.com/abdeen-labs/encore" aria-label="Encore on GitHub" title="Encore on GitHub" data-event="github" data-event-location="header"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg></a>
+      <a class="button button-small button-primary" href="{{.DownloadURL}}" data-event="download" data-event-location="header"{{with .Version}} data-event-version="{{.}}"{{end}}>Download</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section id="top" class="hero" aria-labelledby="hero-title">
+  <div class="wrap hero-text">
+    <img class="hero-icon" src="{{asset "/static/images/icon-256.webp"}}" srcset="{{asset "/static/images/icon-256.webp"}} 1x, {{asset "/static/images/icon-512.webp"}} 2x" alt="" width="128" height="128">
+    <h1 id="hero-title">Encore</h1>
+    <p class="lede">Text to speech, voice cloning, voice design, voice changing, multi-speaker scripts, and transcription, all on your own Mac. Nothing you type, record, or generate leaves your computer.</p>
+    <div class="actions">
+      <a class="button button-primary button-large" href="{{.DownloadURL}}" data-event="download" data-event-location="hero"{{with .Version}} data-event-version="{{.}}"{{end}}>
+        <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
+        Download for Mac
+      </a>
+      <a class="button button-secondary button-large" href="https://github.com/abdeen-labs/encore" data-event="github" data-event-location="hero">View Source</a>
+    </div>
+    <p class="release">{{if .HasRelease}}Version {{.Version}}{{with .Size}} · {{.}}{{end}} · {{end}}macOS {{.MacOS}}+ on Apple silicon · Free and open source</p>
+  </div>
+  <div class="wrap wrap-wide">
+    <figure class="window hero-window">
+      <img src="{{asset "/static/images/studio-1180.webp"}}" srcset="{{srcset "studio" 1180 2360}}" sizes="(min-width: 1212px) 1180px, calc(100vw - 32px)" width="1180" height="780" fetchpriority="high" alt="Encore's Studio: a script with a pause tag, the model, voice, and language pickers, the Perform button, and a list of takes.">
+    </figure>
+  </div>
+</section>
+
+<section id="features" class="feature" aria-labelledby="clone-title">
+  <div class="wrap split">
+    <div class="split-text reveal">
+      <p class="eyebrow">Clone</p>
+      <h2 id="clone-title">A voice from a few seconds of speech.</h2>
+      <p>Drop in any recording or record a few sentences, trim it to the best 5 to 15 seconds, and save it. Encore transcribes the clip for the models that read along, and asks you to confirm the speaker's permission.</p>
+    </div>
+    <figure class="window reveal">
+      {{template "shot" (list "clone" "Clone: trimming a recording to its best eleven seconds, with its transcript, name, and tags." "(min-width: 1060px) 560px, calc(100vw - 32px)")}}
+    </figure>
+  </div>
+</section>
+
+<section class="feature" aria-labelledby="design-title">
+  <div class="wrap split split-flip">
+    <div class="split-text reveal">
+      <p class="eyebrow">Design</p>
+      <h2 id="design-title">Or describe one that doesn't exist yet.</h2>
+      <p>Write what you hear in your head and audition several voices at once. Every audition is a different voice; keep the one you like and it joins your library.</p>
+    </div>
+    <figure class="window reveal">
+      {{template "shot" (list "design" "Design: a written description of a voice and six auditions to choose from." "(min-width: 1060px) 560px, calc(100vw - 32px)")}}
+    </figure>
+  </div>
+</section>
+
+<section class="feature" aria-labelledby="perform-title">
+  <div class="wrap">
+    <div class="intro reveal">
+      <p class="eyebrow">Perform</p>
+      <h2 id="perform-title">Cast a whole scene.</h2>
+      <p>Import a screenplay or a labeled script (.txt, .md, .fountain, or .pdf), cast each speaker, and perform it. Change one line and only that line is generated again.</p>
+    </div>
+  </div>
+  <div class="wrap wrap-wide">
+    <figure class="window reveal">
+      {{template "shot" (list "conversations" "Conversations: a three-speaker script with its cast and the finished recording." "(min-width: 1212px) 1180px, calc(100vw - 32px)")}}
+    </figure>
+  </div>
+  <div class="wrap">
+    <div class="script reveal">
+      <pre aria-label="A script with tags"><code>Ladies and gentlemen, <span class="tag">[pause 0.6s]</span> tonight's performance begins.
+<span class="tag">[laugh]</span> Please silence your phones.
+
+<span class="tag tag-voice">[voice: Mira]</span> Wait, has anyone seen the Captain?</code></pre>
+      <ul class="facts">
+        <li><strong>Plain-text scripts</strong><span>A few tags shape the performance: pauses, voice changes, and sounds like a laugh or a sigh, on the models that have them.</span></li>
+        <li><strong>Pronunciations</strong><span>One list fixes names, jargon, and acronyms for every voice.</span></li>
+        <li><strong>Finishing</strong><span>Level takes to a target loudness, tighten their silences, and export WAV, M4A, or MP3.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="feature" aria-label="Changing and transcribing">
+  <div class="wrap pair">
+    <article class="panel reveal">
+      <figure class="window">
+        {{template "shot" (list "changer" "Changer: a recording re-voiced, with the original and converted waveforms to compare." "(min-width: 1060px) 500px, calc(100vw - 32px)")}}
+      </figure>
+      <h2 class="h3">Change a voice.</h2>
+      <p>Re-voice a recording in one of your voices while keeping its words, timing, and delivery. Switch between the original and the result to compare.</p>
+    </article>
+    <article class="panel reveal">
+      <figure class="window">
+        {{template "shot" (list "transcribe" "Transcribe: a timed transcript that follows playback, beside earlier transcriptions." "(min-width: 1060px) 500px, calc(100vw - 32px)")}}
+      </figure>
+      <h2 class="h3">Transcribe.</h2>
+      <p>Turn audio or video into text with sentence or word timings. Click a line to hear it, then export plain text, SRT, WebVTT, or JSON.</p>
+    </article>
+  </div>
+</section>
+
+<section class="feature" aria-label="Voices and takes">
+  <div class="wrap pair">
+    <article class="panel reveal">
+      <figure class="window">
+        {{template "shot" (list "voices" "Voices: the voice library with one voice open, showing its reference clip, tags, and transcript." "(min-width: 1060px) 500px, calc(100vw - 32px)")}}
+      </figure>
+      <h2 class="h3">Keep a company of voices.</h2>
+      <p>Cloned, designed, and imported voices live in one library with tags, notes, and their reference clips. Share one as an <code>.encorevoice</code> file.</p>
+    </article>
+    <article class="panel reveal">
+      <figure class="window">
+        {{template "shot" (list "history" "History: everything generated, by day, with one take open to show its script and settings." "(min-width: 1060px) 500px, calc(100vw - 32px)")}}
+      </figure>
+      <h2 class="h3">Find every take.</h2>
+      <p>Everything you make is kept with the script and settings it was made with. Search it, play it, export it, or send it back to the Studio.</p>
+    </article>
+  </div>
+</section>
+
+<section class="feature" aria-labelledby="models-title">
+  <div class="wrap split">
+    <div class="split-text reveal">
+      <p class="eyebrow">Models</p>
+      <h2 id="models-title">Sixteen models, downloaded as you need them.</h2>
+      <p>From a 79 MB transcriber to 5 GB studio voices: Qwen3-TTS, VoxCPM2, Chatterbox, Zonos, Orpheus, Whisper, Parakeet, and more. Encore recommends the version that suits your Mac's memory, and runs each model where it runs best.</p>
+      <p class="aside">Models live in the standard Hugging Face cache, so other tools can share them. Each model's license is shown in the app.</p>
+    </div>
+    <figure class="window reveal">
+      {{template "shot" (list "models" "Models: the catalog of speech models with what each can do and its download size." "(min-width: 1060px) 560px, calc(100vw - 32px)")}}
+    </figure>
+  </div>
+</section>
+
+<section id="privacy" class="feature" aria-labelledby="privacy-title">
+  <div class="wrap split">
+    <div class="split-text reveal">
+      <p class="eyebrow">Privacy</p>
+      <h2 id="privacy-title">It stays on your Mac.</h2>
+      <p>Nothing you type, record, or generate leaves your computer. There's no account and no cloud, and Encore collects no analytics, telemetry, or crash reports.</p>
+    </div>
+    <div class="card hosts reveal">
+      <h3>Encore goes online for two things only</h3>
+      <ul>
+        <li><strong>Hugging Face</strong><span>To download the models you pick and, if you add a token for a gated model, to check that it works.</span></li>
+        <li><strong><code>updates.abdeen.industries</code></strong><span>To check for a new version of Encore. It asks before checking automatically, and the check sends only Encore's version.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="feature" aria-labelledby="source-title">
+  <div class="wrap">
+    <div class="source reveal">
+      <h2 id="source-title">Free and open source.</h2>
+      <p>Encore is a native Swift app built on Apple's MLX, with a bundled Python helper for the models that run best there. It's free under the MIT license; each model keeps its own license, shown before you download it.</p>
+      <div class="actions">
+        <a class="button button-secondary" href="https://github.com/abdeen-labs/encore" data-event="github" data-event-location="source">View Source</a>
+        <a class="button button-quiet" href="https://github.com/abdeen-labs/encore/issues/new" data-event="issue" data-event-location="source">
+          Report an Issue
+          <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="download" aria-labelledby="download-title">
+  <div class="wrap download-inner reveal">
+    <img class="download-icon" src="{{asset "/static/images/icon-128.webp"}}" srcset="{{asset "/static/images/icon-128.webp"}} 1x, {{asset "/static/images/icon-256.webp"}} 2x" alt="" width="88" height="88" loading="lazy">
+    <h2 id="download-title">Download Encore</h2>
+    <p class="release">{{if .HasRelease}}Version {{.Version}}{{with .Published}}, {{.}}{{end}}{{with .Size}} · {{.}}{{end}}{{else}}The latest version{{end}}</p>
+    <a class="button button-primary button-large" href="{{.DownloadURL}}" data-event="download" data-event-location="closing"{{with .Version}} data-event-version="{{.}}"{{end}}>
+      <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
+      Download for Mac
+    </a>
+    <p class="requires">Requires macOS {{.MacOS}} or later on Apple silicon. Updates automatically.</p>
+    <div class="brew">
+      <span class="brew-label">Homebrew</span>
+      <code>brew install --cask <span class="nowrap">abdeen-labs/tap/encore</span></code>
+    </div>
+  </div>
+</section>
+
+</main>
+
+{{template "footer" .}}
+</body>
+</html>
+
+{{/* A screenshot from (list name alt sizes), at 1180 and 2360 pixels wide. */}}
+{{define "shot"}}<img src="{{asset (print "/static/images/" (index . 0) "-1180.webp")}}" srcset="{{srcset (index . 0) 1180 2360}}" sizes="{{index . 2}}" width="1180" height="780" loading="lazy" decoding="async" alt="{{index . 1}}">{{end}}

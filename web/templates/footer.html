@@ -1,0 +1,17 @@
+{{define "footer"}}
+<footer class="foot">
+  <div class="wrap foot-inner">
+    <a class="lockup" href="https://abdeen.dev" data-event="labs" data-event-location="footer">
+      <img src="{{asset "/static/brand/lockup-dark.svg"}}" alt="Abdeen Labs" width="164" height="32">
+    </a>
+    <p class="foot-note">Made by Abdeen Labs, the open-source and experimental division of Abdeen Industries.</p>
+    <nav class="foot-links" aria-label="More">
+      <a href="https://github.com/abdeen-labs/encore" data-event="github" data-event-location="footer">Source</a>
+      <a href="https://github.com/abdeen-labs/encore/issues/new" data-event="issue" data-event-location="footer">Report an Issue</a>
+      <a href="https://abdeen.dev/privacy#encore" data-event="privacy" data-event-location="footer">Privacy Policy</a>
+      <a href="https://github.com/abdeen-labs/encore/blob/main/LICENSE" data-event="license" data-event-location="footer">MIT License</a>
+    </nav>
+    <p class="fine">© {{.Year}} Abdeen Labs</p>
+  </div>
+</footer>
+{{end}}

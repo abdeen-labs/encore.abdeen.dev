@@ -1,0 +1,5 @@
+{{/* Umami at stats.abdeen.industries, counting visits on encore.abdeen.dev only, with stats.js for clicks. The data is true on the not-found page. Left out until the site has a website ID (umamiWebsiteID in site.go). */}}
+{{define "stats"}}{{with umamiWebsiteID}}
+<script defer src="https://stats.abdeen.industries/script.js" data-website-id="{{.}}" data-performance="true" data-domains="encore.abdeen.dev"></script>
+<script defer src="{{asset "/static/stats.js"}}"{{if $}} data-not-found{{end}}></script>
+{{end}}{{end}}

@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Not Found — Encore</title>
+<meta name="color-scheme" content="dark">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="{{asset "/static/images/icon-64.png"}}">
+<link rel="stylesheet" href="{{asset "/static/site.css"}}">
+{{template "stats" true}}
+</head>
+<body>
+<main class="missing">
+  <img src="{{asset "/static/images/icon-128.webp"}}" srcset="{{asset "/static/images/icon-128.webp"}} 1x, {{asset "/static/images/icon-256.webp"}} 2x" alt="" width="88" height="88">
+  <h1>Page not found.</h1>
+  <p>There's nothing at this address.</p>
+  <a class="button button-primary" href="/" data-event="home" data-event-location="404">Go to Encore</a>
+</main>
+</body>
+</html>
