@@ -22,6 +22,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="{{asset "/static/fonts/allo.woff2"}}" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{{asset "/static/site.css"}}">
+<script defer src="{{asset "/static/motion.js"}}"></script>
 {{template "stats" false}}
 </head>
 <body>
@@ -115,7 +116,7 @@
 <span class="tag">[laugh]</span> Please silence your phones.
 
 <span class="tag tag-voice">[voice: Mira]</span> Wait, has anyone seen the Captain?</code></pre>
-      <div class="take" aria-hidden="true">
+      <div class="take" aria-hidden="true" data-wiggle=".take-play">
         <span class="take-play"></span>
         <span class="take-wave">
           <span class="bars"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span>
@@ -229,7 +230,7 @@
       Download for Mac
     </a>
     <p class="requires">Requires macOS {{.MacOS}} or later on Apple silicon. Updates automatically.</p>
-    <div class="brew">
+    <div class="brew" data-wiggle=".brew-label">
       <span class="brew-label">Homebrew</span>
       <code>brew install --cask <span class="nowrap">abdeen-labs/tap/encore</span></code>
     </div>

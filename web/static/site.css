@@ -1036,19 +1036,20 @@ code {
     }
   }
 
-  /* The download arrow drops a little on hover. */
+  /* The download arrow drops a little while hovered: a transition, so it
+     eases back from wherever it is when the pointer leaves. */
+  .button-primary .icon {
+    transition: transform 0.45s var(--bounce);
+  }
+
   .button-primary:hover .icon {
-    animation: drop 0.9s var(--bounce) infinite;
+    transform: translateY(3px);
   }
 
-  @keyframes drop {
-    40% {
-      transform: translateY(3px);
-    }
-  }
-
-  .brew:hover .brew-label,
-  .take:hover .take-play {
+  /* The Homebrew label and the take's button wiggle when hovered. motion.js
+     adds .wiggling on hover and takes it off when the wiggle ends, so it
+     always plays to the end, even if the pointer leaves first. */
+  .wiggling {
     animation: wiggle 0.5s var(--ease);
   }
 

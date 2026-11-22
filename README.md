@@ -39,7 +39,7 @@ its hashed name and hashes the stylesheet after.
 ```
 main.go, release.go, site.go   The server: appcast reading, rendering, serving.
 web/templates/                 page.html, footer.html, icons.html (an icon sprite), notfound.html, stats.html (Umami's script tags).
-web/static/                    site.css, stats.js, fonts/ (made by scripts/font.sh), images/ (made by scripts/images.sh), brand/ (the Abdeen Labs lockup).
+web/static/                    site.css, stats.js, motion.js (hover wiggles that finish), fonts/ (made by scripts/font.sh), images/ (made by scripts/images.sh), brand/ (the Abdeen Labs lockup).
 web/root/                      Files served at fixed paths.
 scripts/images.sh, og.swift    Make the images from Encore itself.
 scripts/font.sh                Makes the font from Encore's own.
