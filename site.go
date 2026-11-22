@@ -33,7 +33,7 @@ const siteURL = "https://encore.abdeen.dev"
 // and the site's ID there. With no ID, the page leaves Umami out.
 const (
 	statsOrigin    = "https://stats.abdeen.industries"
-	umamiWebsiteID = ""
+	umamiWebsiteID = "306c23bf-f320-479a-9391-e924165b4080"
 )
 
 const (
