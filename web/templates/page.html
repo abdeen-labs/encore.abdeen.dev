@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Encore — Local voice AI for the Mac</title>
-<meta name="description" content="Free, open-source voice AI that runs on your Mac: text to speech, voice cloning, voice design, voice changing, multi-speaker scripts, and transcription. Nothing you make leaves your computer.">
+<meta name="description" content="Free, open-source voice AI that runs on your Mac: text to speech, voice cloning, voice design, voice changing, multi-speaker scripts, and transcription, with a local API and MCP server for AI agents. Nothing you make leaves your computer.">
 <link rel="canonical" href="{{.SiteURL}}/">
 <meta name="color-scheme" content="light">
 <meta name="theme-color" content="#f3e9d9">
@@ -187,12 +187,34 @@
   </div>
 </section>
 
+<section id="agents" class="feature" aria-labelledby="agents-title">
+  <div class="wrap split split-flip split-agent">
+    <div class="split-text reveal">
+      <p class="eyebrow">Local API</p>
+      <h2 id="agents-title">Let your agents use your voices.</h2>
+      <p>Turn on the local API in Settings and, while Encore is open, AI agents and scripts on your Mac can speak, perform scenes, transcribe, and change voices with your own models and voices. Add Encore to Claude Code or any MCP client, or point an app built for OpenAI's speech API at it.</p>
+      <p class="aside">It's off until you turn it on, and only apps on this Mac can reach it. Everything it makes lands in History.</p>
+    </div>
+    <div class="card agent reveal">
+      <h3>Add it to Claude Code</h3>
+      <code class="command">claude mcp add --transport http encore <span class="nowrap">http://127.0.0.1:7171/mcp</span></code>
+      <ul>
+        <li><span class="tag">speak</span><span>Say anything in one of your voices.</span></li>
+        <li><span class="tag">perform_script</span><span>Perform a scene, one voice per speaker.</span></li>
+        <li><span class="tag">transcribe</span><span>Turn audio or video into text or subtitles.</span></li>
+        <li><span class="tag">change_voice</span><span>Re-voice a recording, keeping its delivery.</span></li>
+      </ul>
+      <p class="agent-foot">Or like OpenAI: <code>http://127.0.0.1:7171/v1</code></p>
+    </div>
+  </div>
+</section>
+
 <section id="privacy" class="feature" aria-labelledby="privacy-title">
   <div class="wrap split">
     <div class="split-text reveal">
       <p class="eyebrow">Privacy</p>
       <h2 id="privacy-title">It stays on your Mac.</h2>
-      <p>Nothing you type, record, or generate leaves your computer. There's no account and no cloud, and Encore collects no analytics, telemetry, or crash reports.</p>
+      <p>Nothing you type, record, or generate leaves your computer. There's no account and no cloud, and Encore collects no analytics, telemetry, or crash reports. The optional local API answers apps on this Mac only.</p>
     </div>
     <div class="card hosts reveal">
       <h3>Encore goes online for two things only</h3>
